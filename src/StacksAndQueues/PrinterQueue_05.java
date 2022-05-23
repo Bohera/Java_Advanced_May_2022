@@ -13,10 +13,12 @@ public class PrinterQueue_05 {
 
         while (!input.equals("print")) {
 
-            if (input.equals("cancel") && queue.size() == 0) {
-                System.out.println("Printer is on standby");
-            } else if (input.equals("cancel")) {
-                System.out.printf("Canceled %s%n", queue.pop()); ;
+            if (input.equals("cancel")) {
+              if (queue.isEmpty()) {
+                  System.out.println("Printer is on standby");
+              } else {
+                  System.out.printf("Canceled %s%n", queue.pop());
+              }
             } else {
                 queue.offer(input);
             }
