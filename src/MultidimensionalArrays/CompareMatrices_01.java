@@ -43,7 +43,7 @@ public class CompareMatrices_01 {
         return true;
     }
 
-    private static int[][] readMatrix(Scanner scanner) {
+    public static int[][] readMatrix(Scanner scanner) {
         String[] dimensions = scanner.nextLine().split("\\s+");
         int rows = Integer.parseInt(dimensions[0]);
         int cols = Integer.parseInt(dimensions[0]);
@@ -61,7 +61,7 @@ public class CompareMatrices_01 {
         return matrix;
     }
 
-    private static void printMatrix(int[][] matrix) {
+    public static void printMatrix(int[][] matrix) {
         for (int[] ints : matrix) {
             for (int anInt : ints) {
                 System.out.print(anInt + " ");
