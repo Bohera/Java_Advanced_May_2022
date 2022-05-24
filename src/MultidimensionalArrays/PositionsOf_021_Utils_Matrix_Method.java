@@ -5,7 +5,7 @@ import Methods.Utils_Matrix;
 import java.util.ArrayList;
 import java.util.Scanner;
 
-public class PositionsOf_021 {
+public class PositionsOf_021_Utils_Matrix_Method {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
 
@@ -29,9 +29,6 @@ public class PositionsOf_021 {
     }
 
     private static String formatOutput(ArrayList<String> outputLines) {
-        if (outputLines.isEmpty()) {
-            return "not found";
-        }
-        return String.join(System.lineSeparator(), outputLines);
+        return outputLines.isEmpty() ? "not found" : String.join(System.lineSeparator(), outputLines);
     }
 }
