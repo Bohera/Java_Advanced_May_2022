@@ -31,21 +31,20 @@ public class MatrixShuffling_05 {
                 command = scanner.nextLine();
                 continue;
             }
-                int r1 = Integer.parseInt(data[1]);
-                int c1 = Integer.parseInt(data[2]);
-                int r2 = Integer.parseInt(data[3]);
-                int c2 = Integer.parseInt(data[4]);
-                if (r1 < 0 || r1 > matrix.length || c1 < 0 || c1 > matrix[0].length
-                        || r2 < 0 || r2 > matrix.length || c2 < 0 || c2 > matrix[0].length) {
-                    System.out.println("Invalid input!");
-                    command = scanner.nextLine();
-                    continue;
-                } else {
-                    String temp = matrix[r1][c1];
-                    matrix[r1][c1] = matrix[r2][c2];
-                    matrix[r2][c2] = temp;
-                    printMatrix(matrix);
-                }
+            int r1 = Integer.parseInt(data[1]);
+            int c1 = Integer.parseInt(data[2]);
+            int r2 = Integer.parseInt(data[3]);
+            int c2 = Integer.parseInt(data[4]);
+            if (r1 < 0 || r1 > matrix.length || c1 < 0 || c1 > matrix[0].length
+                    || r2 < 0 || r2 > matrix.length || c2 < 0 || c2 > matrix[0].length) {
+                System.out.println("Invalid input!");
+                command = scanner.nextLine();
+                continue;
+            }
+            String temp = matrix[r1][c1];
+            matrix[r1][c1] = matrix[r2][c2];
+            matrix[r2][c2] = temp;
+            printMatrix(matrix);
 
             command = scanner.nextLine();
         }
