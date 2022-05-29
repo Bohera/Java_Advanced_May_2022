@@ -8,36 +8,37 @@ public class MathPotato_07 {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
 
+
         String[] names = scanner.nextLine().split("\\s+");
 
         ArrayDeque<String> kidsQueue = new ArrayDeque<>();
         Collections.addAll(kidsQueue, names);
-        int tossToLeave = Integer.parseInt(scanner.nextLine());
-        int cycleCount = 1;
-        int tossesCount = 0;
+        int tosses = Integer.parseInt(scanner.nextLine());
+        int count = 0;
         while (kidsQueue.size() > 1) {
-            for (int i = 0; i < tossToLeave; i++) {
+            for (int i = 1; i < tosses; i++) {
                 kidsQueue.offer(kidsQueue.poll());
-                tossesCount++;
             }
-            if (tossesCount >= kidsQueue.size()) {
-                cycleCount++;
-                tossesCount -= kidsQueue.size();
-            }
-            int countForComposite = 1;
-            for (int i = 1; i < cycleCount; i++) {
-                if (countForComposite % i == 0) {
-                countForComposite++;
+            count++;
+            int compCount = 0;
+            for (int i = 1; i <= count; i++) {
+                if (count % i == 0) {
+                    compCount++;
                 }
             }
-
-            if (cycleCount == 1 || countForComposite > 2) {
+            if (compCount == 1 || compCount > 2) {
                 System.out.println("Removed " + kidsQueue.poll());
             } else {
                 System.out.println("Prime " + kidsQueue.peek());
             }
         }
+
         System.out.println("Last is " + kidsQueue.poll());
 
     }
+
+
 }
+
+
+
