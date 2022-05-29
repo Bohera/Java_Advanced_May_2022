@@ -1,4 +1,4 @@
-package ExercisesStacksAndQueues;
+package StacksAndQueuesExercises;
 
 public class test_05 {
     public static void main(String[] args) {

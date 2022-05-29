@@ -1,11 +1,11 @@
-package ExercisesStacksAndQueues;
+package StacksAndQueuesExercises;
 
 import java.util.ArrayDeque;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.Scanner;
 
-public class BasicQueueOperations_04 {
+public class BasicStackOperations_02 {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
 
@@ -21,21 +21,35 @@ public class BasicQueueOperations_04 {
                 .mapToInt(Integer::parseInt)
                 .toArray();
 
-        ArrayDeque<Integer> queue = new ArrayDeque<>();
+        ArrayDeque<Integer> stack = new ArrayDeque<>();
         for (int i = 0; i < countToPush; i++) {
-            queue.offer(numbers[i]);
+            stack.push(numbers[i]);
         }
         for (int i = 0; i < countToPop; i++) {
-            queue.poll();
+            stack.pop();
         }
 
-        if (queue.contains(elementToSearch)) {
+        if (stack.contains(elementToSearch)) {
             System.out.println("true");
-        } else if (queue.isEmpty()) {
+        } else if (stack.isEmpty()) {
             System.out.println("0");
         } else {
-            System.out.println(Collections.min(queue));
-
+            System.out.println(Collections.min(stack));
+//            System.out.println(stack.stream()
+//                    .min(Integer:: compare)
+//                    .get());
+//            System.out.println(stack.stream()
+//                    .mapToInt(e -> e)
+//                    .min()
+//                    .getAsInt());
+//
+//            int minElement = Integer.MAX_VALUE;
+//            for (Integer number : stack) {
+//                if ( number < minElement) {
+//                    minElement = number;
+//            }
         }
+
+
     }
 }
