@@ -6,7 +6,7 @@ import java.util.Scanner;
 
 public class ReadFile_01 {
     public static void main(String[] args) {
-        String path = "input.txt";
+        String path = "Resources/input.txt";
 
 
         try {

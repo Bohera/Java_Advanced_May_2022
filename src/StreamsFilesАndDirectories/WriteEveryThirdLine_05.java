@@ -4,11 +4,11 @@ import java.io.*;
 
 public class WriteEveryThirdLine_05 {
     public static void main(String[] args) throws IOException {
-        String path = "input.txt";
+        String path = "Resources/input.txt";
 
         BufferedReader reader = new BufferedReader(new InputStreamReader(new FileInputStream(path)));
 
-        BufferedWriter writer = new BufferedWriter(new FileWriter("every-third-line-out.txt"));
+        BufferedWriter writer = new BufferedWriter(new FileWriter("Resources/every-third-line-out.txt"));
 
         String line = reader.readLine();
         int counter = 0;

@@ -10,13 +10,13 @@ public class ExtractIntegers_04 {
     public static void main(String[] args) throws IOException {
         //String programDir = System.getProperty("user.dir");
 
-        String path = "input.txt";
+        String path = "Resources/input.txt";
 
         FileInputStream fileInputStream = new FileInputStream(path);
 
         Scanner scanner = new Scanner(fileInputStream);
 
-        PrintWriter writer = new PrintWriter(new FileOutputStream("integers-out.txt"));
+        PrintWriter writer = new PrintWriter(new FileOutputStream("Resources/integers-out.txt"));
 
         while (scanner.hasNext()) {
             if (scanner.hasNextInt()) {

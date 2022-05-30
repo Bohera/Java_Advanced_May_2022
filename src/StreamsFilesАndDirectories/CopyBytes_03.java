@@ -8,12 +8,12 @@ import java.util.Set;
 
 public class CopyBytes_03 {
     public static void main(String[] args) {
-        String path = "input.txt";
+        String path = "Resources/input.txt";
 
 
         try {
             FileInputStream fileInputStream = new FileInputStream(path);
-            FileOutputStream fileOutputStream = new FileOutputStream("output.txt");
+            FileOutputStream fileOutputStream = new FileOutputStream("Resources/output.txt");
 
             int read = fileInputStream.read();
 
