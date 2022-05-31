@@ -26,7 +26,7 @@ public class MatrixShuffling_05 {
 
         while (!command.equals("END")) {
             String[] data = command.split("\\s+");
-            if (!data[0].equals("swap") && data.length != 5) {
+            if (!data[0].equals("swap") || data.length != 5) {
                 System.out.println("Invalid input!");
                 command = scanner.nextLine();
                 continue;
