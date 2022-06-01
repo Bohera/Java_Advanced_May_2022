@@ -24,7 +24,6 @@ public class StringMatrixRotation_061 {
 
         fillWithSpaces(textLines, longest);
 
-
         int rows = textLines.size();
         int cols = longest.length();
 
@@ -33,13 +32,12 @@ public class StringMatrixRotation_061 {
             matrix[row] = textLines.get(row).toCharArray();
         }
 
-
         int degree = Integer.parseInt(degreeString) % 360;
 
-        rotateMatrix(rows, cols, matrix, degree);
+        rotateMatrixAndPrint(rows, cols, matrix, degree);
     }
 
-    private static void rotateMatrix(int rows, int cols, char[][] matrix, int degree) {
+    private static void rotateMatrixAndPrint(int rows, int cols, char[][] matrix, int degree) {
         switch (degree) {
             case 0:
                 for (int row = 0; row < rows; row++) {
