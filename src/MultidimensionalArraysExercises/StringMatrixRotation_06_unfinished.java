@@ -6,7 +6,7 @@ import java.util.Scanner;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-public class StringMatrixRotation_06 {
+public class StringMatrixRotation_06_unfinished {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
 
