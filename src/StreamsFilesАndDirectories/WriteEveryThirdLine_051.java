@@ -7,7 +7,7 @@ import java.util.List;
 
 public class WriteEveryThirdLine_051 {
     public static void main(String[] args) throws IOException {
-        String path = "input.txt";
+        String path = "Resources/input.txt";
 
         List<String> strings = Files.readAllLines(Paths.get(path));
 

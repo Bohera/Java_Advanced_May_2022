@@ -34,9 +34,9 @@ public class Crossfire_07 {
             for (int row = 0; row < rows; row++) {
                 for (int col = 0; col < cols; col++) {
                     if (col < matrix[row].length) {
-                        if (row == targetRow && col >= targetCol - radius && col <= targetCol + radius) {
+                        if (row == targetRow && (col >= targetCol - radius && col <= targetCol + radius)) {
                             continue;
-                        } else if (col == targetCol && row >= targetRow - radius && row <= targetRow + radius) {
+                        } else if (col == targetCol && (row >= targetRow - radius && row <= targetRow + radius)) {
                             continue;
                         }
                         listRow.add(matrix[row][col]);
@@ -49,7 +49,10 @@ public class Crossfire_07 {
                 matrix[row] = tempArr;
                 listRow = new ArrayList<>();
             }
-
+//            for (int row = 0; row < rows; row++) {
+//                if (matrix[row].length == 0) {
+//                    matrix[]
+//            }
             commandString = scanner.nextLine();
         }
 
