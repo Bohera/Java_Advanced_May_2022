@@ -18,6 +18,7 @@ public class NestedFolders_08 {
         System.out.println(Files.walk(root.toPath())
                 .map(Path::toFile)
                 .map(File::getName)
+                //.filter(File::isDirectory)
                 .collect(Collectors.joining(System.lineSeparator())));
 
 
