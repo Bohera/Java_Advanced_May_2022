@@ -1,4 +1,4 @@
-package DefiningClasses;
+package DefiningClasses.BankAccount;
 
 public class BankAccount {
     private static double interestRate = 0.02;

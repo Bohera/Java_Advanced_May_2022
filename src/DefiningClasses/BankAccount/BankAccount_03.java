@@ -1,4 +1,4 @@
-package DefiningClasses;
+package DefiningClasses.BankAccount;
 
 import java.util.HashMap;
 import java.util.Map;
