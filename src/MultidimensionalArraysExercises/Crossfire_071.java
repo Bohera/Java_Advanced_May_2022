@@ -32,15 +32,12 @@ public class Crossfire_071 {
             List<Integer> listRow = new ArrayList<>();
 
             for (int row = 0; row < rows; row++) {
-                for (int col = 0; col < cols; col++) {
-                    if (col < matrix[row].length) {
-                        if (row == targetRow && col > targetCol - 1 - radius && col < targetCol  + 1  + radius) {
-                            continue;
-                        } else if (col == targetCol && row > targetRow - 1 - radius && row < targetRow + 1 + radius) {
-                            continue;
-                        }
-                        listRow.add(matrix[row][col]);
+                for (int col = 0; col < matrix[row].length; col++) {
+                    if (row == targetRow && col > targetCol - 1 - radius && col < targetCol + 1 + radius
+                            || col == targetCol && row > targetRow - 1 - radius && row < targetRow + 1 + radius) {
+                        continue;
                     }
+                    listRow.add(matrix[row][col]);
                 }
                 int[] tempArr = new int[listRow.size()];
                 for (int i = 0; i < listRow.size(); i++) {
@@ -52,15 +49,14 @@ public class Crossfire_071 {
 
             commandString = scanner.nextLine();
         }
-
+        System.out.println();
         for (int row = 0; row < rows; row++) {
-            for (int col = 0; col < cols; col++) {
-                if (col >= matrix[row].length){
-                    continue;
+            if (matrix[row].length != 0) {
+                for (int col = 0; col < matrix[row].length; col++) {
+                    System.out.print(matrix[row][col] + " ");
                 }
-                System.out.print(matrix[row][col] + " ");
+                System.out.println();
             }
-            System.out.println();
         }
     }
 }
