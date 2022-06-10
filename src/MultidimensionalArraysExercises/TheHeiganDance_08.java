@@ -24,7 +24,7 @@ public class TheHeiganDance_08 {
             int[][] danceFloor = new int[15][15];
 
             for (int row = 0; row < 15; row++) {
-                for (int col = 0; col < 15; col++) {
+                for (int col = 0; col < 15; col++) { //Arrays.fill(danceFloor[row], 0)
                     danceFloor[row][col] = 0;
                 }
             }

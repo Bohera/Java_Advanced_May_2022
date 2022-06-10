@@ -49,7 +49,6 @@ public class Crossfire_071 {
 
             commandString = scanner.nextLine();
         }
-        System.out.println();
         for (int row = 0; row < rows; row++) {
             if (matrix[row].length != 0) {
                 for (int col = 0; col < matrix[row].length; col++) {

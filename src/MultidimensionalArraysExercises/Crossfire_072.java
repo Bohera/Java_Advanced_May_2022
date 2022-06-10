@@ -29,38 +29,37 @@ public class Crossfire_072 {
             int targetCol = Integer.parseInt(command[1]);
             int radius = Integer.parseInt(command[2]);
 
-            List<Integer> listRow = new ArrayList<>();
-
             for (int row = 0; row < rows; row++) {
                 for (int col = 0; col < cols; col++) {
-                    if (col < matrix[row].length) {
-                        if (row == targetRow && col > targetCol - 1 - radius && col < targetCol  + 1  + radius) {
-                            continue;
-                        } else if (col == targetCol && row > targetRow - 1 - radius && row <= targetRow + 1 + radius) {
-                            continue;
+                    if (row == targetRow && col > targetCol - 1 - radius && col < targetCol + 1 + radius
+                            || col == targetCol && row > targetRow - 1 - radius && row < targetRow + 1 + radius) {
+                        matrix[row][col] = -1;
+                        if (row == targetRow && col <= targetCol) {
+                            targetCol++;
                         }
-                        listRow.add(matrix[row][col]);
                     }
                 }
-                int[] tempArr = new int[listRow.size()];
-                for (int i = 0; i < listRow.size(); i++) {
-                    tempArr[i] = listRow.get(i);
-                }
-                matrix[row] = tempArr;
-                listRow = new ArrayList<>();
             }
 
             commandString = scanner.nextLine();
         }
 
         for (int row = 0; row < rows; row++) {
-            for (int col = 0; col < cols; col++) {
-                if (col >= matrix[row].length){
-                    continue;
+            boolean isFull = false;
+            for (int n : matrix[row]) {
+                if (n != -1) {
+                    isFull = true;
+                    break;
                 }
-                System.out.print(matrix[row][col] + " ");
             }
-            System.out.println();
+            if (isFull) {
+                for (int col = 0; col < matrix[row].length; col++) {
+                    //if (matrix[row][col] != -1){
+                        System.out.print(matrix[row][col] + " ");
+                    //}
+                }
+                System.out.println();
+            }
         }
     }
 }
