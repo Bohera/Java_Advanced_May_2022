@@ -58,7 +58,6 @@ public class Main {
             Car car = new Car(model, engineMap.get(engine), weight, color);
             carMap.put(model, car);
         }
-        carMap.forEach((k,v) -> System.out.println(v.toString()));
-
+        carMap.forEach((k,v) -> System.out.println(v));
     }
 }
