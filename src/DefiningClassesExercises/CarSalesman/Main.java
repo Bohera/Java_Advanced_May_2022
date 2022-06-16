@@ -57,7 +57,11 @@ public class Main {
             }
             Car car = new Car(model, engineMap.get(engine), weight, color);
             carMap.put(model, car);
+            System.out.println(car);
         }
-        carMap.forEach((k,v) -> System.out.println(v));
+//carMap.forEach((k,v) -> System.out.println(v));
+//        for (Map.Entry<String, Car> carEntry : carMap.entrySet()) {
+//            System.out.println(carEntry.getValue());
+//        }
     }
 }
