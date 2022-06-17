@@ -28,7 +28,6 @@ public class MouseAndCheese {
 
         String command = scanner.nextLine();
 
-
         int cheeseEaten = 0;
         boolean ifMouseMissing = false;
         boolean isBonus = false;
