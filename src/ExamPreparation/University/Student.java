@@ -34,4 +34,9 @@ public class Student {
     public void setBestSubject(String bestSubject) {
         this.bestSubject = bestSubject;
     }
+
+    @Override
+    public String toString() {
+        return String.format("Student: %s %s, %s", this.firstName, this.lastName, this.bestSubject);
+    }
 }

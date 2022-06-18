@@ -31,7 +31,7 @@ public class University {
             return "No seats in the university";
         }
         students.add(student);
-        return String.format("Added student %s %s%n", student.getFirstName(), student.getLastName());
+        return String.format("Added student %s %s", student.getFirstName(), student.getLastName());
     }
 
     public String dismissStudent(Student student) {
@@ -39,13 +39,17 @@ public class University {
             return "Student not found";
         }
         students.remove(student);
-        return String.format("Removed student %s %s%n", student.getFirstName(), student.getLastName());
+        return String.format("Removed student %s %s", student.getFirstName(), student.getLastName());
     }
 
     public String getStudent(String firstName, String lastName) {
-        int index = students.lastIndexOf(firstName);
-        Student student = students.get(index);
-        return String.format("Student: %s %s, %s", student.getFirstName(), student.getLastName(), student.getBestSubject());
+        int indexStudent = 0;
+        for (int i = 0; i < students.size(); i++) {
+            if (students.get(i).getFirstName().equals(firstName) && students.get(i).getLastName().equals(lastName)){
+                indexStudent = i;
+            }
+        }
+        return String.format("Student: %s %s, %s", students.get(indexStudent).getFirstName(), students.get(indexStudent).getLastName(), students.get(indexStudent).getBestSubject());
     }
 
     public String getStatistics() {
