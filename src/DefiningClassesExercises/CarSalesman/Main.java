@@ -9,7 +9,6 @@ public class Main {
         int n = Integer.parseInt(scanner.nextLine());
 
         Map<String, Engine> engineMap = new LinkedHashMap<>();
-        Map<String, Car> carMap = new LinkedHashMap<>();
 
         for (int i = 0; i < n; i++) {
             String[] engineInfo = scanner.nextLine().split("\\s+");
@@ -37,10 +36,8 @@ public class Main {
 
         for (int i = 0; i < m; i++) {
             String[] carInfo = scanner.nextLine().split("\\s+");
-
             //{Model}   {Engine} {Weight} {Color}
             //FordFocus V4-33    1300     Silver
-
             String model = carInfo[0];
             String engine = carInfo[1];
             String weight = "n/a";
@@ -56,12 +53,7 @@ public class Main {
                 }
             }
             Car car = new Car(model, engineMap.get(engine), weight, color);
-            carMap.put(model, car);
             System.out.println(car);
         }
-//carMap.forEach((k,v) -> System.out.println(v));
-//        for (Map.Entry<String, Car> carEntry : carMap.entrySet()) {
-//            System.out.println(carEntry.getValue());
-//        }
     }
 }
