@@ -29,37 +29,55 @@ public class Crossfire_072 {
             int targetCol = Integer.parseInt(command[1]);
             int radius = Integer.parseInt(command[2]);
 
+            List<Integer> listRow = new ArrayList<>();
+            boolean missingRow = false;
             for (int row = 0; row < rows; row++) {
-                for (int col = 0; col < cols; col++) {
+                for (int col = 0; col < matrix[row].length; col++) {
                     if (row == targetRow && col > targetCol - 1 - radius && col < targetCol + 1 + radius
                             || col == targetCol && row > targetRow - 1 - radius && row < targetRow + 1 + radius) {
-                        matrix[row][col] = -1;
-                        if (row == targetRow && col <= targetCol) {
-                            targetCol++;
-                        }
+                        continue;
                     }
+                    listRow.add(matrix[row][col]);
                 }
+                int[] tempArr = new int[listRow.size()];
+                for (int i = 0; i < listRow.size(); i++) {
+                    tempArr[i] = listRow.get(i);
+                }
+                matrix[row] = tempArr;
+                if (listRow.size() == 0) {
+                    missingRow = true;
+                }
+                listRow = new ArrayList<>();
+            }
+            if (missingRow) {
+                matrix = removingMissingRow(matrix);
+                missingRow = false;
             }
 
             commandString = scanner.nextLine();
         }
-
         for (int row = 0; row < rows; row++) {
-            boolean isFull = false;
-            for (int n : matrix[row]) {
-                if (n != -1) {
-                    isFull = true;
-                    break;
-                }
-            }
-            if (isFull) {
+            if (matrix[row].length != 0) {
                 for (int col = 0; col < matrix[row].length; col++) {
-                    //if (matrix[row][col] != -1){
-                        System.out.print(matrix[row][col] + " ");
-                    //}
+                    System.out.print(matrix[row][col] + " ");
                 }
                 System.out.println();
             }
         }
+    }
+
+    private static int[][] removingMissingRow(int[][] matrix) {
+        int[][] newMatrix = new int[matrix.length - 1][matrix[0].length];
+        int newMatrixRow = 0;
+        for (int row = 0; row < matrix.length; row++) {
+            if (matrix[row].length != 0) {
+                newMatrix[newMatrixRow] = matrix[row];
+                newMatrixRow++;
+            }
+        }
+        matrix = new int[newMatrix.length][newMatrix[0].length];
+        matrix = newMatrix;
+
+        return newMatrix;
     }
 }
