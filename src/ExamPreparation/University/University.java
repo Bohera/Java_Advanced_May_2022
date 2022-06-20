@@ -38,8 +38,9 @@ public class University {
         if (!students.contains(student)) {
             return "Student not found";
         }
+        String removedStudent = String.format("Removed student %s %s", student.getFirstName(), student.getLastName());
         students.remove(student);
-        return String.format("Removed student %s %s", student.getFirstName(), student.getLastName());
+        return removedStudent;
     }
 
     public String getStudent(String firstName, String lastName) {
