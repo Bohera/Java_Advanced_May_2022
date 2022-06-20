@@ -1,4 +1,4 @@
-package ExamPreparationExercises.hotel;
+package hotel;
 
 public class Person {
     public String name;

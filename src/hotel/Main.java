@@ -1,4 +1,4 @@
-package ExamPreparationExercises.hotel;
+package hotel;
 
 public class Main {
     public static void main(String[] args) {
@@ -47,3 +47,4 @@ public class Main {
         // Person Maria: 66611, Age: 41, Hometown: Sofia
     }
 }
+
