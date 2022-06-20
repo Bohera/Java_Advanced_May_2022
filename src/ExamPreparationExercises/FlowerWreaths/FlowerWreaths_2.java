@@ -4,7 +4,7 @@ import java.util.ArrayDeque;
 import java.util.Arrays;
 import java.util.Scanner;
 
-public class FlowerWreaths {
+public class FlowerWreaths_2 {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
 
@@ -28,24 +28,21 @@ public class FlowerWreaths {
         for (int i = 0; i < inputRoses.length; i++) {
             rosesQueue.offer(inputRoses[i]);
         }
-
+        int smallerList = Math.min(inputLilies.length, inputRoses.length);
         int wreathsCount = 0;
         int flowersStored = 0;
 
-        while (!liliesStack.isEmpty() && !rosesQueue.isEmpty()) {
+        for (int i = 0; i < smallerList; i++) {
             int currentLilies = liliesStack.pop();
             int currentRoses =  rosesQueue.pop();
 
-            int sumOfFlowers = currentLilies + currentRoses;
-
-            while (sumOfFlowers > 15) {
+            while (currentLilies + currentRoses > 15) {
                 currentLilies -= 2;
-                sumOfFlowers = currentLilies + currentRoses;
             }
-            if (sumOfFlowers == 15) {
+            if (currentLilies + currentRoses == 15) {
                 wreathsCount++;
             } else {
-                flowersStored += sumOfFlowers;
+                flowersStored += currentLilies + currentRoses;
             }
         }
 
