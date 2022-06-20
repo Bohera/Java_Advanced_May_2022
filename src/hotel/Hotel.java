@@ -7,6 +7,7 @@ public class Hotel {
     public String name;
     public int capacity;
     public List<Person> roster;
+    //fix
 
     public Hotel(String name, int capacity) {
         this.name = name;

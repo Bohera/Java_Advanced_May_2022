@@ -2,6 +2,7 @@ package hotel;
 
 public class Main {
     public static void main(String[] args) {
+        //fix
         //Initialize the repository (hotel)
         Hotel hotel = new Hotel("Hilton", 30);
         //Initialize entity
