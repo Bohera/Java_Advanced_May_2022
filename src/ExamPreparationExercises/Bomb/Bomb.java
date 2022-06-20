@@ -3,6 +3,8 @@ package ExamPreparationExercises.Bomb;
 import java.util.Scanner;
 
 public class Bomb {
+    private static int currentRow = 0;
+    private static int currentCol = 0;
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
 
@@ -12,8 +14,7 @@ public class Bomb {
         String[][] field = new String[dimension][dimension];
 
         int bombsCount = 0;
-        int currentRow = 0;
-        int currentCol = 0;
+
 
         for (int i = 0; i < dimension; i++) {
             String[] tempRow = scanner.nextLine().split(" ");
@@ -34,12 +35,17 @@ public class Bomb {
 
         for (int i = 0; i < directions.length; i++) {
             switch (directions[i]) {
+                //up - (-1,0)
+                //down - (+1,0)
+                //left - (0,-1)
+                //right - (0,+1)
                 case "up":
+                    if (reachedEnd){
+                        break;
+                    }
                     if (isInBounds(field,currentRow - 1, currentCol)) {
                         if (field[currentRow - 1][currentCol].equals("e")) {
-                            field[currentRow - 1][currentCol] = "s";
-                            field[currentRow][currentCol] = "+";
-                            currentRow -= 1;
+                            move(field, -1, 0);
                             reachedEnd = true;
                             break;
                         }
@@ -47,17 +53,16 @@ public class Bomb {
                             bombsCount--;
                             System.out.println("You found a bomb!");
                         }
-                        field[currentRow - 1][currentCol] = "s";
-                        field[currentRow][currentCol] = "+";
-                        currentRow -= 1;
+                        move(field, -1, 0);
                     }
                     break;
                 case "down":
+                    if (reachedEnd){
+                        break;
+                    }
                     if (isInBounds(field,currentRow + 1, currentCol)) {
                         if (field[currentRow + 1][currentCol].equals("e")) {
-                            field[currentRow + 1][currentCol] = "s";
-                            field[currentRow][currentCol] = "+";
-                            currentRow += 1;
+                            move(field, +1, 0);
                             reachedEnd = true;
                             break;
                         }
@@ -65,17 +70,16 @@ public class Bomb {
                             bombsCount--;
                             System.out.println("You found a bomb!");
                         }
-                        field[currentRow + 1][currentCol] = "s";
-                        field[currentRow][currentCol] = "+";
-                        currentRow += 1;
+                        move(field, +1, 0);
                     }
                     break;
                 case "left":
+                    if (reachedEnd){
+                        break;
+                    }
                     if (isInBounds(field,currentRow, currentCol - 1)) {
                     if (field[currentRow][currentCol - 1].equals("e")) {
-                        field[currentRow][currentCol - 1] = "s";
-                        field[currentRow][currentCol] = "+";
-                        currentCol -= 1;
+                        move(field, 0, -1);
                         reachedEnd = true;
                         break;
                     }
@@ -83,17 +87,16 @@ public class Bomb {
                         bombsCount--;
                         System.out.println("You found a bomb!");
                     }
-                    field[currentRow][currentCol - 1] = "s";
-                    field[currentRow][currentCol] = "+";
-                    currentCol -= 1;
+                        move(field, 0, -1);
                 }
                     break;
                 case "right":
+                    if (reachedEnd){
+                        break;
+                    }
                     if (isInBounds(field,currentRow, currentCol + 1)) {
                         if (field[currentRow][currentCol + 1].equals("e")) {
-                            field[currentRow][currentCol + 1] = "s";
-                            field[currentRow][currentCol] = "+";
-                            currentCol += 1;
+                            move(field, 0, +1);
                             reachedEnd = true;
                             break;
                         }
@@ -101,9 +104,7 @@ public class Bomb {
                             bombsCount--;
                             System.out.println("You found a bomb!");
                         }
-                        field[currentRow][currentCol + 1] = "s";
-                        field[currentRow][currentCol] = "+";
-                        currentCol += 1;
+                        move(field, 0, +1);
                     }
                     break;
             }
@@ -116,9 +117,15 @@ public class Bomb {
         } else {
             System.out.printf("END! %d bombs left on the field", bombsCount);
         }
-
-
     }
+
+    private static void move(String[][] field, int mutatorRow, int mutatorCol) {
+        field[currentRow + mutatorRow][currentCol + mutatorCol] = "s";
+        field[currentRow][currentCol] = "+";
+        currentRow += mutatorRow;
+        currentCol += mutatorCol;
+    }
+
     private static boolean isInBounds(String[][] field, int r, int c) {
         return r >= 0 && r < field.length && c >= 0 && c < field[r].length;
     }
