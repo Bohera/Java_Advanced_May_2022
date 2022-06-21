@@ -51,18 +51,17 @@ public class Crossfire_072 {
             }
             if (missingRow) {
                 matrix = removingMissingRow(matrix);
+                rows--;
                 missingRow = false;
             }
 
             commandString = scanner.nextLine();
         }
         for (int row = 0; row < rows; row++) {
-            if (matrix[row].length != 0) {
-                for (int col = 0; col < matrix[row].length; col++) {
-                    System.out.print(matrix[row][col] + " ");
-                }
-                System.out.println();
+            for (int col = 0; col < matrix[row].length; col++) {
+                System.out.print(matrix[row][col] + " ");
             }
+            System.out.println();
         }
     }
 
@@ -75,9 +74,6 @@ public class Crossfire_072 {
                 newMatrixRow++;
             }
         }
-        matrix = new int[newMatrix.length][newMatrix[0].length];
-        matrix = newMatrix;
-
         return newMatrix;
     }
 }
