@@ -13,8 +13,8 @@ public class Cooking {
 
         ArrayDeque<Integer> ingredients = new ArrayDeque<>();
         Arrays.stream(scanner.nextLine().split("\\s+"))
-                .map(Integer::parseInt).
-                forEach(ingredients::push);             //stack pop
+                .map(Integer::parseInt)
+                .forEach(ingredients::push);             //stack pop
 
         Map<String, Integer> cookedFoods = new TreeMap<>();
         cookedFoods.put("Bread", 0);
