@@ -1,4 +1,4 @@
-package GenericsExercises.GenericSwapMethodIntegers;
+package GenericsExercises.GenericSwapMethodStrings;
 
 import java.util.Scanner;
 
@@ -7,10 +7,10 @@ public class Main {
         Scanner scanner = new Scanner(System.in);
         int n = Integer.parseInt(scanner.nextLine());
 
-        Box<Integer> box = new Box<>();
+        Box<String> box = new Box<>();
 
         for (int i = 0; i < n; i++) {
-            Integer element = Integer.parseInt(scanner.nextLine());
+            String element = scanner.nextLine();
             box.add(element);
         }
 
