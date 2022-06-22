@@ -1,7 +1,8 @@
-package ExamPreparationExercises.hotel;
+package hotel;
 
 public class Main {
     public static void main(String[] args) {
+
         //Initialize the repository (hotel)
         Hotel hotel = new Hotel("Hilton", 30);
         //Initialize entity
@@ -47,3 +48,4 @@ public class Main {
         // Person Maria: 66611, Age: 41, Hometown: Sofia
     }
 }
+
