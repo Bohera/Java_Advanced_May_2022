@@ -1,4 +1,4 @@
-package easterBasket;
+package ExamPreparationMoreExercises.ExamRetakeApril2022.easterBasket;
 
 import java.util.ArrayList;
 import java.util.Comparator;
