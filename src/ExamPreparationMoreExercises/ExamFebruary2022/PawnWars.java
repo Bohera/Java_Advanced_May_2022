@@ -43,7 +43,7 @@ public class PawnWars {
 //                break;
 //            }
             //white
-            if (board[whiteRow - 1][whiteCol - 1] != 'b' && board[whiteRow - 1][whiteCol + 1] != 'b') {
+            if (board[whiteRow - 1][Math.max(whiteCol - 1,0)] != 'b' && board[whiteRow - 1][Math.min(whiteCol + 1, 7)] != 'b') {
                 board[whiteRow][whiteCol] = '-';
                 whiteRow--;
                 board[whiteRow][whiteCol] = 'w';
@@ -59,7 +59,7 @@ public class PawnWars {
                 break;
             }
             //black
-            if (board[blackRow + 1][blackCol - 1] != 'w' && board[blackRow + 1][blackCol + 1] != 'w') {
+            if (board[blackRow + 1][Math.max(blackCol - 1, 0)] != 'w' && board[blackRow + 1][Math.min(blackCol + 1, 7)] != 'w') {
                 board[blackRow][blackCol] = '-';
                 blackRow++;
                 board[blackRow][blackCol] = 'b';
