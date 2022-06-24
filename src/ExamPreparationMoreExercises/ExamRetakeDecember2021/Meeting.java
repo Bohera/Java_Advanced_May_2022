@@ -10,9 +10,9 @@ public class Meeting {
         Scanner scanner = new Scanner(System.in);
 
         ArrayDeque<Integer> maleStack = new ArrayDeque<>();
-                Arrays.stream(scanner.nextLine().split("\\s+"))
-                        .map(Integer::parseInt)
-                        .forEach(maleStack::push);
+        Arrays.stream(scanner.nextLine().split("\\s+"))
+                .map(Integer::parseInt)
+                .forEach(maleStack::push);
 
         ArrayDeque<Integer> femaleQueue = Arrays.stream(scanner.nextLine().split("\\s+"))
                 .map(Integer::parseInt)
@@ -21,89 +21,61 @@ public class Meeting {
         int matchedCount = 0;
 
         while (!maleStack.isEmpty() && !femaleQueue.isEmpty()) {
-            int currentMale = maleStack.pop();
+            int currentMale = maleStack.peek();
+            int currentFemale = femaleQueue.peek();
+
+            if (currentMale <= 0 && currentFemale <= 0) {
+                maleStack.pop();
+                femaleQueue.pop();
+                continue;
+            }
+
             if (currentMale <= 0) {
-                if (!maleStack.isEmpty()) {
-                    currentMale = maleStack.pop();
-                } else {
-                    break;
-                }
+                maleStack.pop();
+                continue;
+            }
+
+            if (currentFemale <= 0) {
+                femaleQueue.pop();
+                continue;
+            }
+
+            if (currentMale % 25 == 0 && currentFemale % 25 == 0) {
+                maleStack.pop();
+                maleStack.pop();
+                femaleQueue.pop();
+                femaleQueue.pop();
+                continue;
             }
 
             if (currentMale % 25 == 0) {
-                if (!maleStack.isEmpty()) {
-                    currentMale = maleStack.pop();
-                } else {
-                    break;
-                }
-                if (!maleStack.isEmpty()) {
-                    currentMale = maleStack.pop();
-                } else {
-                    break;
-                }
-            }
-
-            int currentFemale = femaleQueue.pop();
-
-            if (currentFemale <= 0) {
-                if (!femaleQueue.isEmpty()) {
-                    currentFemale = femaleQueue.pop();
-                } else {
-                    break;
-                }
+                maleStack.pop();
+                maleStack.pop();
+                continue;
             }
 
             if (currentFemale % 25 == 0) {
-                if (!femaleQueue.isEmpty()) {
-                    currentFemale = femaleQueue.pop();
-                } else {
-                    maleStack.push(currentMale);
-                    break;
-                }
-                if (!femaleQueue.isEmpty()) {
-                    currentFemale = femaleQueue.pop();
-                } else {
-                    maleStack.push(currentMale);
-                    break;
-                }
+                femaleQueue.pop();
+                femaleQueue.pop();
+                continue;
             }
 
             if (currentMale == currentFemale) {
+                maleStack.pop();
+                femaleQueue.pop();
                 matchedCount++;
             } else {
-                if (currentMale - 2 > 0) {
-                    maleStack.push(currentMale - 2);
-                }
+                maleStack.pop();
+                femaleQueue.pop();
+                maleStack.push(currentMale - 2);
             }
         }
         System.out.printf("Matches: %d%n", matchedCount);
 
-        if (maleStack.isEmpty()) {
-            System.out.println("Males left: none");
-        } else {
-            System.out.print("Males left: ");
-            int maleCount = maleStack.size();
-            for (int i = 0; i < maleCount; i++) {
-                System.out.print(maleStack.pop());
-                if (i < maleCount - 1) {
-                    System.out.print(", ");
-                }
-            }
-            System.out.println();
-        }
+        String malesLeft = maleStack.isEmpty() ? "none" : maleStack.stream().map(String::valueOf).collect(Collectors.joining(", "));
+        System.out.println("Males left: " + malesLeft);
 
-        if (femaleQueue.isEmpty()) {
-            System.out.println("Females left: none");
-        } else {
-            System.out.print("Females left: ");
-            int femaleCount = femaleQueue.size();
-            for (int i = 0; i < femaleCount; i++) {
-                System.out.print(femaleQueue.pop());
-                if (i < femaleCount - 1) {
-                    System.out.print(", ");
-                }
-            }
-        }
-
+        String femalesLeft = femaleQueue.isEmpty() ? "none" : femaleQueue.stream().map(String::valueOf).collect(Collectors.joining(", "));
+        System.out.println("Females left: " + femalesLeft);
     }
 }
